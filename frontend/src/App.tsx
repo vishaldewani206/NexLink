@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router-dom"
 import { LandingHome } from "./pages/Landing/LandingHome"
 import { LandingAboutUs } from "./pages/Landing/LandingAboutUs"
 import { LandingLayout } from "./layout/LandingLayout"
+import LoginPage from "./pages/Landing/LoginPage"
+// import {LoginForm} from "@/components/login-form"
+
 
 function App() {
 
@@ -9,6 +12,7 @@ function App() {
   
   return (
       <Routes>
+        <Route element={<LoginPage />} path="/login" />
         <Route element={<LandingLayout  />}>
           <Route path="/" element={<LandingHome />} />
           <Route path="/about" element={<LandingAboutUs />} />

@@ -55,14 +55,14 @@ export const Navbar = () => {
 
   return (
     <nav className="nav">
-      <div className={`nav-wrapper ${isOpen ? "active rounded-t-2xl border-b-0 md:border-b-1 md:rounded-full" : "rounded-full"}`}>
+      <div className={`nav-wrapper ${isOpen ? "active rounded-t-2xl border-b-0 md:border-b md:rounded-full" : "rounded-full"}`}>
         <div>
-          <a className="heading text-xl font-bold text-secondary" href="/">Linkist</a>
+          <a className="heading text-xl font-bold text-primary" href="/">Linkist</a>
         </div>
         <div className="links">
           <Link className="hover-link" to={"/"}>Home</Link>
           <a className="hover-link" href="#about-us">About Us</a>
-          <Link to={"/login"} className="text-secondary hover-link">Login</Link>
+          <Link to={"/login"} className="text-primary hover-link">Login</Link>
         </div>
         
         <div onClick={handleHamburger} className="hamburger">
