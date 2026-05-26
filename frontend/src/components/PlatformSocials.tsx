@@ -12,7 +12,7 @@ export const PlatformSocials = ({
 }: psT) => {
 
   return (
-    <div className='grid grid-cols-3 gap-12 my-8'>
+    <div className='grid grid-cols-3 md:gap-12 gap-4 my-8'>
       {socialMedia.map(
         (e: socialMediaType, i: number): JSX.Element => (
           <div
@@ -23,10 +23,10 @@ export const PlatformSocials = ({
                   : [...prev, e.name],
               )
             }
-            className={`${selectedSocials?.includes(e.name) ? 'border-gray-600 bg-purple-100' : ''} flex-col-center gap-4 border-2 px-8 py-2 rounded-2xl`}
+            className={`${selectedSocials?.includes(e.name) ? 'border-gray-600 bg-purple-100' : ''} flex-col-center gap-2 border-2 px-4 md:px-8  py-4 rounded-2xl`}
             key={i}
           >
-            <img className='w-20 h-20 object-contain' src={e.icon} alt='' />
+            <img className='md:w-20 md:h-20 w-8 h-8 object-contain' src={e.icon} alt='' />
             <p>{e.name}</p>
           </div>
         ),

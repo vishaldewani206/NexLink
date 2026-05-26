@@ -60,4 +60,8 @@
       opacity: 1;
     }
   }
+
+  .dash_heading{
+    @apply text-xl font-medium;
+  }
 }

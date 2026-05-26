@@ -14,7 +14,7 @@ export const Platforms = () => {
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<PlatformsTypes>();
   const onSubmit: SubmitHandler<PlatformsTypes> = data => {
     console.log(data);
-    navigate("/firsttime/two");
+    navigate("/firsttime/three");
   };
 
   useEffect(() => {

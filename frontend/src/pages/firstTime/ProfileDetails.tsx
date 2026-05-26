@@ -18,8 +18,6 @@ export const ProfileDetails = () => {
     }
   };
 
-  
-
   const { register, handleSubmit, watch, formState: { errors } } = useForm<ProfileTypes>();
   const onSubmit: SubmitHandler<ProfileTypes> = data => {
     console.log(data);
@@ -54,8 +52,8 @@ export const ProfileDetails = () => {
           register("file").onChange(e); 
         }}
       /> 
-      <Input {...register("name")} className="max-w-90 my-4" placeholder="Your name" />
-      <Textarea {...register("bio")} className="max-w-90 mb-4" placeholder="bio"/>
+      <Input {...register("name")} className="md:max-w-90 max-w-75  my-4" placeholder="Your name" />
+      <Textarea {...register("bio")} className="md:max-w-90 max-w-75  mb-4" placeholder="bio"/>
       <Button variant={"default"} size={"lg"} className="min-w-50 hover:bg-primary hover:text-white">Next</Button>
 
     </FirstTimeWrapper>

@@ -6,6 +6,10 @@ import LoginPage from "./pages/Landing/LoginPage"
 import SignupPage from "./pages/Landing/SignupPage"
 import {ProfileDetails} from "./pages/firstTime/ProfileDetails"
 import { Platforms } from "./pages/firstTime/Platforms"
+import { SelectThemes } from "./pages/firstTime/SelectThemes"
+import { Dashboard } from "./pages/dashboard/Dashboard"
+import { DashboardLayout } from "./layout/DashboardLayout"
+import { Header } from "./pages/dashboard/Header"
 
 
 function App() {
@@ -19,8 +23,13 @@ function App() {
         <Route path="/firsttime">
           <Route index element={<ProfileDetails />}  />
           <Route element={<Platforms />} path="two" />
+          <Route element={<SelectThemes />} path="three" />
         </Route>
-        <Route element={<LandingLayout  />}>
+        <Route element={<DashboardLayout/>} path="/dashboard">
+          <Route index element={<Dashboard />}  />
+          <Route element={<Header />} path="header" />
+        </Route>
+        <Route element={<LandingLayout />}>
           <Route path="/" element={<LandingHome />} />
           <Route path="/about" element={<LandingAboutUs />} />
         </Route>

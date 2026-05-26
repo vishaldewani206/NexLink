@@ -7,3 +7,7 @@ export type ProfileTypes = {
 export type PlatformsTypes = {
   platforms: string[];
 };
+
+export type SelectThemeTypes = {
+  theme: string;
+}

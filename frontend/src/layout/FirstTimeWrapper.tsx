@@ -13,9 +13,9 @@ type firstTimeTypes<T extends FieldValues> = {
 
 export const FirstTimeWrapper = <T extends FieldValues>({heading, text, children, onSubmit, handleSubmit}: firstTimeTypes<T>) => {
   return (
-    <form  onSubmit={handleSubmit(onSubmit)} className="flex-col-center">
-      <h1 className="text-4xl font-bold mt-4 mb-1">{heading}</h1>
-      <p className="text-gray-600">{text}</p>
+    <form  onSubmit={handleSubmit(onSubmit)} className="flex-col-center md:p-8 p-4">
+      <h1 className="md:text-4xl text-2xl font-bold mt-4 mb-1">{heading}</h1>
+      <p className="text-gray-600 text-center ">{text}</p>
       {children}
     </form>
     
