@@ -10,6 +10,7 @@ import { SelectThemes } from "./pages/firstTime/SelectThemes"
 import { Dashboard } from "./pages/dashboard/Dashboard"
 import { DashboardLayout } from "./layout/DashboardLayout"
 import { Header } from "./pages/dashboard/Header"
+import { Wallpaper } from "./components/dashboard/Wallpaper"
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route element={<DashboardLayout/>} path="/dashboard">
           <Route index element={<Dashboard />}  />
           <Route element={<Header />} path="header" />
+          <Route element={<Wallpaper />} path="wallpaper" />
         </Route>
         <Route element={<LandingLayout />}>
           <Route path="/" element={<LandingHome />} />

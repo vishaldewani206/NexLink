@@ -17,7 +17,7 @@ export const Header = () => {
     };
 
   return (
-    <div className='p-4'>
+    <div>
       <h2 className='dash_heading'>Layout</h2>
       <div className='flex space-x-4'>
         <HeaderBox t={'classic'} layout={layout} setLayout={setLayout} />

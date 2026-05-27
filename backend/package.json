@@ -1,7 +1,7 @@
 {
-  "name": "linkist",
+  "name": "nexlink",
   "version": "1.0.0",
-  "description": "backend for linkist",
+  "description": "backend for NexLink",
   "license": "ISC",
   "author": "Vishal",
   "main": "index.js",

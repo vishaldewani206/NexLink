@@ -14,7 +14,7 @@ export function SidebarOptInForm() {
       <CardHeader className="px-4">
         <CardTitle className="text-sm">Any Queries?</CardTitle>
         <CardDescription>
-          Now you can directly contact with the creators of Linkist
+          Now you can directly contact with the creators of NexLink
         </CardDescription>
       </CardHeader>
       <CardContent>

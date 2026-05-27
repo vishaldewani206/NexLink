@@ -57,7 +57,7 @@ export const Navbar = () => {
     <nav className="nav">
       <div className={`nav-wrapper ${isOpen ? "active rounded-t-2xl border-b-0 md:border-b md:rounded-full" : "rounded-full"}`}>
         <div>
-          <a className="heading text-xl font-bold text-primary" href="/">Linkist</a>
+          <a className="heading text-xl font-bold text-primary" href="/">NexLink</a>
         </div>
         <div className="links">
           <Link className="hover-link" to={"/"}>Home</Link>

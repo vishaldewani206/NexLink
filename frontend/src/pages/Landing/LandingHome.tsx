@@ -16,7 +16,7 @@ export const LandingHome = () => {
         One simple link.
         </h1>
         <p className="md:text-2xl w-[90%] md:w-auto text-center md:text-left  md:my-5 mt-0 mb-4 text-gray-500 font-light">
-          Turn your scattered links into a clean, <br/> beautiful page with <strong className="text-primary">Linkist</strong>
+          Turn your scattered links into a clean, <br/> beautiful page with <strong className="text-primary">NexLink</strong>
         </p>
 
         <div className="flex gap-2 mb-5 md:mb-0">
