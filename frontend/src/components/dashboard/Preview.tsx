@@ -17,7 +17,7 @@ export const Preview = () => {
     },
   ]
   return (
-    <div className="relative w-70  h-full max-h-150 overflow-hidden rounded-2xl">
+    <div className="relative w-70  h-full max-h-150 overflow-hidden rounded-2xl z-10">
         <div className="preview z-10">
           <div className="md:w-16 md:h-16 w-12 h-12 bg-gray-400 rounded-full overflow-hidden">
           <img src="/images/profile-photo.png" alt="" />

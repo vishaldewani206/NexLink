@@ -23,7 +23,7 @@ export const Background = ({t, bg, dgColor} : BgType) => {
   }
 
   return (
-    <div style={{backgroundColor: bg ? bg : "white"}} className="absolute inset-0 top-0 left-0 w-full h-full  ">
+    <div style={{backgroundColor: bg ? bg : "white"}} className="absolute inset-0 top-0 left-0 w-full h-full  -z-10">
       {setBg()}
     </div>
   )

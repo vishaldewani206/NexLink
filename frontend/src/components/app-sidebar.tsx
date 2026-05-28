@@ -12,7 +12,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { Command, GalleryVerticalEndIcon, LayoutTemplate, Palette, PanelBottom, Type, UserRound, Wallpaper } from "lucide-react"
+import { Command, GalleryVerticalEndIcon, LayoutTemplate,  Type, UserRound, Wallpaper } from "lucide-react"
 import { Button } from "./ui/button"
 
 const data = {
@@ -43,16 +43,16 @@ const data = {
       url: "/dashboard/buttons",
       icon: <Command />
     },
-    {
-      title: "Colors",
-      url: "/dashboard/colors",
-      icon: <Palette />
-    },
-    {
-      title: "Footer",
-      url: "/dashboard/footer",
-      icon: <PanelBottom />
-    },
+    // {
+    //   title: "Colors",
+    //   url: "/dashboard/colors",
+    //   icon: <Palette />
+    // },
+    // {
+    //   title: "Footer",
+    //   url: "/dashboard/footer",
+    //   icon: <PanelBottom />
+    // },
   ],
 }
 

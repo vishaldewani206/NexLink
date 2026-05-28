@@ -1,17 +1,11 @@
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 export function NavMain({
   items,
@@ -27,23 +21,22 @@ export function NavMain({
     }[]
   }[]
 }) {
-  const { isMobile } = useSidebar()
-
-  const naviate = useNavigate()
+  const navigate = useNavigate()
+  const location = useLocation()
 
   return (
-    <SidebarGroup >
+    <SidebarGroup>
       <SidebarMenu>
         {items.map((item) => (
-          <DropdownMenu  key={item.title}>
-            <SidebarMenuItem>
-              <DropdownMenuTrigger  asChild>
-                <SidebarMenuButton onClick={()=> naviate(item.url) } className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-                  {item?.icon}{item.title}
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-            </SidebarMenuItem>
-          </DropdownMenu>
+          <SidebarMenuItem key={item.title}>
+            <SidebarMenuButton
+              isActive={location.pathname === item.url}
+              onClick={() => navigate(item.url)}
+            >
+              {item?.icon}
+              {item.title}
+            </SidebarMenuButton>
+          </SidebarMenuItem>
         ))}
       </SidebarMenu>
     </SidebarGroup>

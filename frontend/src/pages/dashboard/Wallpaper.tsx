@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Background } from "./backgrounds/Background";
-import { Input } from "../ui/input";
+import { Background } from "../../components/dashboard/backgrounds/Background";
+import { Input } from "../../components/ui/input";
 
 export const Wallpaper = () => {
   const [wallpaper, setWallpaper] = useState<string>("plain");
@@ -9,9 +9,9 @@ export const Wallpaper = () => {
   return (
     <div>
       <h2 className="dash_heading">Wallpaper Style</h2>
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-4">
         {styles.map((e:string)=>(
-        <div onClick={()=> setWallpaper(e)} className={`${wallpaper == e && "border-2 border-purple-600"} w-30 h-40 overflow-hidden relative rounded-2xl`}>
+        <div key={e} onClick={()=> setWallpaper(e)} className={`${wallpaper == e && "border-2 border-purple-600"} w-30 h-40 overflow-hidden relative rounded-2xl z-10`}>
         <Background t={e} bg="black" dgColor={dgColor} />
       </div>
       ))}

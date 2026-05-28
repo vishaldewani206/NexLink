@@ -13,7 +13,7 @@ export const DashboardLayout = () => {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 w-full h-full ">
           <div className="grid gap-4 md:grid-cols-[3fr_1fr] grow">
-            <div className="min-h-20 rounded-xl bg-muted/50 md:order-1 order-2 p-4" >
+            <div className="min-h-20 rounded-xl bg-muted/50 md:order-1 order-2 p-8" >
               <Outlet />
             </div>
             <div className="h-full min-h-120 flex-center rounded-xl bg-muted/50 md:order-2 order-1">

@@ -7,6 +7,7 @@ type linksType = {
 export type themesTypes = {
   name: string,
   bgColor: string,
+  wallpaper: string,
   textColor: string,
   btnColor: string,
   btnTextColor?: string,
@@ -18,6 +19,7 @@ export const themes : themesTypes[] = [
     name: "black",
     bgColor: "#000000",
     textColor: "#ffffff",
+    wallpaper: "plain",
     btnColor: "#444444",
     btnTextColor: "#ffffff",
     links:[
@@ -34,6 +36,7 @@ export const themes : themesTypes[] = [
   {
     name: "red",
     bgColor: "#f23333",
+    wallpaper: "dots",
     textColor: "#ffffff",
     btnColor: "#780000",
     btnTextColor: "#ffffff",
@@ -51,6 +54,7 @@ export const themes : themesTypes[] = [
   {
     name: "blue",
     bgColor: "#33aff2",
+    wallpaper: "grid",
     textColor: "#0e0e0e",
     btnColor: "#004e70",
     btnTextColor: "#ffffff",
