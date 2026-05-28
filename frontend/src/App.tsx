@@ -13,6 +13,7 @@ import { Wallpaper } from "./pages/dashboard/Wallpaper"
 import { Theme } from "./pages/dashboard/Theme"
 import { Text } from "./pages/dashboard/Text"
 import {Buttons} from "./pages/dashboard/Buttons"
+import { Links } from "./pages/dashboard/Links"
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
           <Route element={<SelectThemes />} path="three" />
         </Route>
         <Route element={<DashboardLayout/>} path="/dashboard">
-          <Route index element={<Navigate to="theme" replace />} />
+          <Route index element={<Navigate to="links" replace />} />
+          <Route element={<Links />} path="links" />
           <Route element={<Theme />} path="theme" />
           <Route element={<Header />} path="header" />
           <Route element={<Wallpaper />} path="wallpaper" />

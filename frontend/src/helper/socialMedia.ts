@@ -1,7 +1,5 @@
-export type socialMediaType = {
-  name: string,
-  icon: string,
-} 
+import type { socialMediaType } from "./dashboardTypes";
+
 export const socialMedia: socialMediaType[] = [
   {
     name: "Instagram",

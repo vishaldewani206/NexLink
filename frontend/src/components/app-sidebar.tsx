@@ -12,11 +12,16 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { Command, GalleryVerticalEndIcon, LayoutTemplate,  Type, UserRound, Wallpaper } from "lucide-react"
+import { Command, GalleryVerticalEndIcon, LayoutTemplate,  Link,  Type, UserRound, Wallpaper } from "lucide-react"
 import { Button } from "./ui/button"
 
 const data = {
   navMain: [
+    {
+      title: "Links",
+      url: "/dashboard/links",
+      icon: <Link />
+    },
     {
       title: "Theme",
       url: "/dashboard/theme",

@@ -60,7 +60,7 @@ export const Navbar = () => {
           <a className="heading text-xl font-bold text-primary" href="/">NexLink</a>
         </div>
         <div className="links">
-          <Link className="hover-link" to={"/"}>Home</Link>
+          <Link className="hover-link" to={"/dashboard"}>Home</Link>
           <a className="hover-link" href="#about-us">About Us</a>
           <Link to={"/login"} className="text-primary hover-link">Login</Link>
         </div>
