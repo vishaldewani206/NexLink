@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/components/app-sidebar"
 import { Preview } from "@/components/dashboard/Preview"
+import { Button } from "@/components/ui/button"
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { Outlet } from "react-router-dom"
 
@@ -16,7 +17,10 @@ export const DashboardLayout = () => {
             <div className="min-h-20 rounded-xl bg-muted/50 md:order-1 order-2 p-8" >
               <Outlet />
             </div>
-            <div className="h-full min-h-120 flex-center rounded-xl bg-muted/50 md:order-2 order-1">
+            <div className="h-full min-h-120 flex-col-center rounded-xl bg-muted/50 md:order-2 order-1">
+            <div className="z-10 mb-4">
+              <Button size={"lg"} className="min-w-50">Publish</Button>
+            </div>
               <Preview />
             </div>
           </div>

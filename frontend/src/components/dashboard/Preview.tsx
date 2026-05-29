@@ -18,6 +18,7 @@ export const Preview = () => {
   ]
   return (
     <div className="relative w-70  h-full max-h-150 overflow-hidden rounded-2xl z-10">
+        
         <div className="preview z-10">
           <div className="md:w-16 md:h-16 w-12 h-12 bg-gray-400 rounded-full overflow-hidden">
           <img src="/images/profile-photo.png" alt="" />
@@ -35,7 +36,6 @@ export const Preview = () => {
         <button className="bg-amber-300 text-black w-full py-1 md:py-3 rounded-sm mt-2 md:mt-4 cursor-pointer hover:scale-105 transition-transform text-sm md:text-lg">Subscribe to Newsletter</button>
         </div>
         </div>
-      
         <div className="w-full h-full z-0">
           <Background t="grid" bg="black" />
         </div>

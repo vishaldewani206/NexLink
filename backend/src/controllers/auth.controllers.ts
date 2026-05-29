@@ -4,6 +4,8 @@ import { ApiError } from "../utils/ApiError";
 import { User } from "../models/User";
 import { ApiResponse } from "../utils/ApiResponse";
 import { sendVerificationCode } from "../helper/verifyAndEmail";
+import { sendToken } from "../helper/sendToken";
+import { cookieOptions } from "../utils/cookieOptions";
 
 
 
@@ -28,7 +30,7 @@ const register = asyncHandler(async (req: Request, res: Response): Promise<void>
   const THIRTY_MINUTES = 30 * 60 * 1000
   const now = Date.now()
 
-  let user = await User.findOne({ email, accountVerified: false })
+  let user = await User.findOne({ email, accountVerified: false }).select("+password +verificationCode +verificationCodeExpire +attemptsTime +attempts")
 
   if (user) {
     const lastAttempt = user.attemptsTime
@@ -71,13 +73,49 @@ const register = asyncHandler(async (req: Request, res: Response): Promise<void>
 
   const safeUser = await User
     .findById(user._id)
-    .select("-password -resetPasswordToken -resetPasswordExpire -verificationCode -verificationCodeExpire")
+    .select("+password +resetPasswordToken +resetPasswordExpire +verificationCode +verificationCodeExpire +attemptsTime +attempts") //UNCOMMENT
 
   res.status(200).json(
     new ApiResponse(200, safeUser, `Verification code sent successfully to ${name}`)
   )
 })
 
-export { register }
+
+const login = asyncHandler(async (req: Request,res: Response) : Promise<void> => {
+    const {email, password} = req.body
+
+    if(!email || !password){
+        throw new ApiError(400, "All fields are required")
+    }
+
+    const user = await User.findOne({email, accountVerified: true}).select("+password")
+
+    if(!user){
+        throw new ApiError(400, "Invalid email or password")
+    }
+
+    const isPasswordMatched = await user.comparePassword(password)
+
+    if(!isPasswordMatched){
+        throw new ApiError(400, "Invalid email or password")
+    }
+
+    sendToken(user, 200, "logged in successfully", res)
+
+})
+
+
+const logout = asyncHandler(async (req,res) => {
+  res.clearCookie("token", {
+    ...cookieOptions(0),
+    expires: new Date(0)
+  })
+  res.status(200).json(new ApiResponse(200, {}, "logged out successfully"))
+})
+
+
+
+
+export { register, login, logout }
 
 

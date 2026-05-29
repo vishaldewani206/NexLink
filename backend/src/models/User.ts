@@ -1,6 +1,6 @@
 import { CallbackWithoutResultAndOptionalError, model, Schema } from "mongoose";
 import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken"
+import jwt, {SignOptions} from "jsonwebtoken"
 import crypto from "crypto"
 
 
@@ -50,44 +50,59 @@ const userSchema = new Schema<IUser>({
   password: {
     type: String,
     required: true,
-    trim:true,
     minLength: [8, "Password must have at least 8 characters."],
-    maxLength: [32, "Password cannot have more than 32 characters."],
+    maxLength: [300, "Password cannot have more than 32 characters."],
+    select: false
   },
   googleId: { 
     type: String, 
     unique: true, 
-    sparse: true
+    sparse: true,
+    select: false
   },
   accountVerified:{
     type: Boolean,
     default: false
   },
-  verificationCode: Number,
-  verificationCodeExpire: Date,
-  resetPasswordToken: String,
-  resetPasswordExpire: Date,
+  verificationCode: {
+    type: Number,
+    select: false
+  },
+
+  verificationCodeExpire: {
+    type: Date,
+    select: false
+  },
+
+  resetPasswordToken: {
+    type: String,
+    select: false
+  },
+
+  resetPasswordExpire: {
+    type: Date,
+    select: false
+  },
   attempts:{
     type:Number,
-    default: 0
+    default: 0,
+    select:false
   },
   attemptsTime:{
     type: Date,
-    default: Date.now
+    default: Date.now,
+    select:false
   },
   refreshToken: {
-    type: String
+    type: String,
+    select:false
   },
 }, {timestamps:true})
 
 
-userSchema.pre<IUser>("save", async function (
-  this: IUser,
-  next: CallbackWithoutResultAndOptionalError
-) {
-  if (!this.isModified("password")) return next()
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return
   this.password = await bcrypt.hash(this.password, 10)
-  next()
 })
 
 userSchema.methods.comparePassword = async function (
@@ -118,13 +133,13 @@ userSchema.methods.generateToken = function (): string {
   const secret = process.env.JWT_SECRET
   const expire = process.env.JWT_EXPIRE
 
-  if (!secret)  throw new Error("JWT_SECRET is not defined in environment variables")
-  if (!expire)  throw new Error("JWT_EXPIRE is not defined in environment variables")
+  if (!secret) throw new Error("JWT_SECRET is not defined in environment variables")
+  if (!expire) throw new Error("JWT_EXPIRE is not defined in environment variables")
 
   return jwt.sign(
     { id: this._id },
     secret,
-    { expiresIn: expire }
+    { expiresIn: expire as SignOptions["expiresIn"] }
   )
 }
 
