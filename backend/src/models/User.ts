@@ -4,6 +4,7 @@ import jwt, {SignOptions} from "jsonwebtoken"
 import crypto from "crypto"
 
 
+
 interface IUser extends Document{
   name: string,
   username: string,
