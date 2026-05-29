@@ -1,4 +1,4 @@
-import { CallbackWithoutResultAndOptionalError, model, Schema } from "mongoose";
+import { CallbackWithoutResultAndOptionalError, Document, model, Schema } from "mongoose";
 import bcrypt from "bcrypt"
 import jwt, {SignOptions} from "jsonwebtoken"
 import crypto from "crypto"
@@ -13,7 +13,7 @@ interface IUser extends Document{
   googleId: string,
   accountVerified: boolean,
   attempts: number,
-  attemptsTime: Date,
+  attemptsTime: Date | undefined,
   refreshToken: string,
   verificationCode: number | undefined
   verificationCodeExpire: Date | undefined

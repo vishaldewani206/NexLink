@@ -114,8 +114,49 @@ const logout = asyncHandler(async (req,res) => {
 })
 
 
+const verifyOtp = asyncHandler(async (req: Request, res: Response) => {
+  const { email, otp } = req.body as { email: string; otp: string }
 
+  if (!email || !otp) {
+    throw new ApiError(400, "All fields are required")
+  }
 
-export { register, login, logout }
+  const user = await User.findOne({ email, accountVerified: false }).select(
+    "+verificationCode +verificationCodeExpire +attempts +attemptsTime"
+  )
+
+  const isVerifiedUser = await User.findOne({ email, accountVerified: true })
+
+  if (!user && isVerifiedUser) {
+    throw new ApiError(400, "User is already verified")
+  }
+
+  if (!user) {
+    throw new ApiError(404, "User not found")
+  }
+
+  if (user.verificationCode !== Number(otp)) {
+    throw new ApiError(400, "Invalid OTP")
+  }
+
+  const currentTime = Date.now()
+  const verificationCodeExpire = new Date(user.verificationCodeExpire!).getTime()
+
+  if (currentTime > verificationCodeExpire) {
+    throw new ApiError(400, "OTP Expired")
+  }
+
+  user.attempts = 0
+  user.attemptsTime = undefined
+  user.accountVerified = true
+  user.verificationCode = undefined
+  user.verificationCodeExpire = undefined
+
+  await user.save({ validateModifiedOnly: true })
+
+  sendToken(user, 200, "Account Verified", res)
+})
+
+export { register, login, logout, verifyOtp }
 
 
